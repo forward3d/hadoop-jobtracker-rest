@@ -1,0 +1,1 @@
+rvm use --create jruby-1.7.3@jobtracker-rest 

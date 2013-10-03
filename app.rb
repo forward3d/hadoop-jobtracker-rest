@@ -35,6 +35,7 @@ get '/jobs/running' do
       :map_progress     => running_job.mapProgress,
       :reduce_progress  => running_job.reduceProgress,
       :priority         => job_status.getJobPriority,
+      :start_time       => job_status.getStartTime
     }
   end.to_json
 end

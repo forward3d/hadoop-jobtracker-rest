@@ -28,8 +28,10 @@ end
 
 get '/jobs/running' do
   jobs = client.jobsToComplete.map do |job_status|
+
     running_job = client.getJob(job_status.jobId)
     {
+      :user             => job_status.getUsername,
       :job_id           => job_status.jobId,
       :job_name         => running_job.getJobName,
       :map_progress     => running_job.mapProgress,
@@ -44,6 +46,7 @@ get '/jobs/all' do
   jobs = client.getAllJobs.map do |job_status|
     running_job = client.getJob(job_status.jobId) 
     {
+      :user             => job_status.getUsername,
       :job_id           => job_status.jobId,
       :job_name         => running_job.getJobName,
       :status           => JobStatus.getJobRunState(job_status.getRunState),
